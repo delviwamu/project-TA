@@ -4,6 +4,67 @@
 
 Dokumentasi ini berisi kumpulan perintah Git yang sering digunakan untuk mengelola repository versi kontrol.
 
+## Perintah Git awal
+
+Langakah" setup:
+
+Pastikan sudah download project
+```
+git clone <alamat_url_repository>
+```
+
+Seperti ni
+```
+git clone https://github.com/delviwamu/project-TA.git
+```
+
+Jika project sudah didownload sebelumnya, tinggal Tarik perubahan terbaru
+```
+git pull
+```
+
+Karena ini project Laravel sehingga harus ada composer terinstall.
+
+Pastikan sudah ada composer din laptop dengan cara, buka terminal dan ketik:
+```
+composer
+```
+
+Jika ada tampilan composer maka bertanda program composer sudah terinstall
+
+Kemudian buka project di visual studio code, lalu buka terminal dan pastikan di terminal sudah mengarah ke dalam project tersebut.
+
+Lakukan composer update
+```
+composer update
+```
+
+Tunggu hingga proses update atau install selesai
+
+Buat file `.env`, copy dari file `.env.example`
+
+Setelah itu masukan nama database, username.
+Contoh: 
+```
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=si_manajemen_berkas_perkara
+DB_USERNAME=root
+DB_PASSWORD=
+```
+
+Kemudian generate key, dengan cara jalankan perintah
+```
+php artisan key:generate
+```
+
+Setelah itu jalankan server, dengan cara:
+```
+php artisan serve
+```
+
+
 ---
 
 ## 🔧 Inisialisasi Repository
