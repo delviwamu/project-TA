@@ -3,11 +3,11 @@
 
 <head>
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>{{ $siteTitle ?? 'Sistem Informasi' }}</title>
+  <title>{{ $siteTitle ?? env('APP_NAME') }}</title>
 
   <meta content="width=device-width, initial-scale=1.0, shrink-to-fit=no" name="viewport" />
 
-  <link rel="icon" href="{!! $siteFavicon ?? 'favicon.png' !!}" type="image/x-icon" />
+  <link rel="icon" href="{!! asset($siteFavicon) ?? asset('assets/img/logo-lbh.png') !!}" type="image/x-icon" />
 
   <!-- Fonts and icons -->
   <script src="{{ asset('assets/js/plugin/webfont/webfont.min.js') }}"></script>

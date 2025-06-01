@@ -18,7 +18,7 @@ class ClientController extends Controller
     public function index(Request $request)
     {
         $pageTitle = 'Data Klien';
-        $pageDescription = 'Menampilkan semua data klien yang sudah ditambahkan.';
+        $pageDescription = 'Data klien yang sudah ditambahkan. Menampilkan: Nama Lengkap, NIK, Alamat, Nomor HP, dan Tanggal Input.';
 
         $search = $request->query('search');
 
@@ -40,7 +40,7 @@ class ClientController extends Controller
     {
         // teks untuk judul dan deskripsi halaman
         $pageTitle = 'Buat Klien Baru';
-        $pageDescription = 'Formulir tambah data klien baru.';
+        $pageDescription = 'Formulir tambah data klien baru. Menampilkan formulir input: Nama Lengkap, NIK, Alamat, Nomor HP, dan Tanggal Input.';
     
         return view('client.form', compact(
             'pageTitle',
@@ -81,12 +81,28 @@ class ClientController extends Controller
         return redirect()->route('client.index')->with('success', 'Data klien berhasil disimpan.');
     }
 
+    // show 
+    public function show($id)
+    {
+        // teks untuk judul dan deskripsi halaman
+        $pageTitle = 'Detail Data Klien';
+        $pageDescription = 'Informasi detail data klien yang sudah ditambahkan sebelumnya. Menampilkan data: Nama Lengkap, NIK, Alamat, Nomor HP, dan Tanggal Input.';
+
+        $data = Client::findOrFail($id);
+    
+        return view('client.show', compact(
+            'pageTitle',
+            'pageDescription',
+            'data',
+        ));
+    }
+
     // edit 
     public function edit($id)
     {
         // teks untuk judul dan deskripsi halaman
         $pageTitle = 'Ubah Data Klien';
-        $pageDescription = 'Formulir ubah data klien yang sudah ditambahkan.';
+        $pageDescription = 'Formulir ubah data klien yang sudah ditambahkan sebelumnya. Menampilkan formulir input: Nama Lengkap, NIK, Alamat, Nomor HP, dan Tanggal Input.';
 
         $data = Client::findOrFail($id);
     

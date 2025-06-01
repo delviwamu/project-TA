@@ -17,6 +17,12 @@ use App\Http\Controllers\ClientController;
 
 Route::post('/update-theme', [ThemeController::class, 'updateTheme'])->name('update.theme');
 
+// route login
+Route::get('/', function () {
+        return redirect()->route('login');
+    })->name('login');
+
+
 Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/dasbor', [DasborController::class, 'index'])->name('dasbor');

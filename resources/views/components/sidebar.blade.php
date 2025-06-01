@@ -72,7 +72,13 @@
               
               <li @if(Request::segment(2) == 'statistik' && Request::segment(3) == 'anggota') class="active" @endif">
                 <a href="{{ auth()->user()->hasRole('admin') ? route('dasbor') : route('dasbor') }}">
-                  <span class="sub-item">Statistik Anggota Berdasarkan Status</span>
+                  <span class="sub-item">Statistik Klien</span>
+                </a>
+              </li>
+              
+              <li @if(Request::segment(2) == 'statistik' && Request::segment(3) == 'anggota') class="active" @endif">
+                <a href="{{ auth()->user()->hasRole('admin') ? route('dasbor') : route('dasbor') }}">
+                  <span class="sub-item">Statistik Kasus Berdasarkan Status</span>
                 </a>
               </li>
               
@@ -105,13 +111,13 @@
               
               <li @if(Request::segment(1) == 'client' && Request::segment(2) == 'create') class="active" @endif>
                 <a href="{{ route('client.create') ? route('client.create') : route('dasbor') }}">
-                  <span class="sub-item">Buat client Baru</span>
+                  <span class="sub-item">Buat Klien Baru</span>
                 </a>
               </li>
               
-              <li @if(Request::segment(1) == 'client') class="active" @endif>
+              <li @if(Request::segment(1) == 'client' && Request::segment(2) == '') class="active" @endif>
                 <a href="{{ route('client.index') ? route('client.index') : route('dasbor') }}">
-                  <span class="sub-item">Data client</span>
+                  <span class="sub-item">Data Klien</span>
                 </a>
               </li>
               
