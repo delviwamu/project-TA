@@ -22,8 +22,11 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-body">
-                                    <p class="fs-1">Selamat datang, Kepala Advokasi!</p>
-                                    <p class="fs-4 text-muted">...</p>
+                                    <p class="fs-1">Selamat datang!</p>
+                                    <p class="fs-4 text-muted">{{ $siteDescription }}</p>
+                                    <p class="fs-4 text-muted">
+                                        <img src="{{ asset($siteLogo) }}" class="w-25 rounded-circle" />
+                                    </p>
                                 </div>
                             </div>
                         </div>

@@ -16,14 +16,6 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
             UserSeeder::class,
                         
-            KampusSeeder::class,
-            
-            FakultasSeeder::class,
-            
-            ProgramStudiSeeder::class,
-            
-            AnggotaSeeder::class,
-
             ClientSeeder::class,
             ClientCaseSeeder::class,
             CourtSessionSeeder::class,

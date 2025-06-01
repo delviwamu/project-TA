@@ -60,7 +60,7 @@ class AppServiceProvider extends ServiceProvider
                 'author' => 'Avelinus Korey',
 
                 // site copyright info
-                'siteCopyright' => '<script>document.write(new Date().getFullYear())</script> &copy; Si-PMKRI Jayapura - Dikembangkan oleh by <a href="https://github.com/AvelinusKorey" target="_blank">Avelinus Korey</a>',
+                'siteCopyright' => '<script>document.write(new Date().getFullYear())</script> &copy; Si-PMKRI Jayapura - Dikembangkan oleh by <a href="https://github.com/delviwamu/" target="_blank">Delvi Wamu</a>',
                 
                 // footer links
                 'footerLinks' => 'footerLinks',

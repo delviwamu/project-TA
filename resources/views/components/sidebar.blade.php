@@ -25,7 +25,7 @@
     <div class="sidebar-content">
       <ul class="nav nav-secondary">
       
-      @if(auth()->user()->hasRole('admin'))
+      @if(auth()->user()->hasRole('admin') || auth()->user()->hasRole('advokasi'))
 
         <li class="nav-item active">
           <a data-bs-toggle="collapse" href="#dasbor" class="collapsed" aria-expanded="false">
@@ -106,55 +106,25 @@
 
       
 
-        <!-- anggota -->
-        <li class="nav-item submenu @if(Request::segment(2) == 'anggota') active @endif" ">
-          <a data-bs-toggle="collapse" href="#anggota" class="collapsed" aria-expanded="false">
+        <!-- klien -->
+        <li class="nav-item submenu">
+          <a data-bs-toggle="collapse" href="#klien" class="collapsed" aria-expanded="false">
             <i class="fas fa-users"></i>
-            <p>Anggota</p>
+            <p>Klien</p>
             <span class="caret"></span>
           </a>
-          <div class="collapse @if(Request::segment(2) == 'anggota') show @endif" id="anggota">
+          <div class="collapse @if(Request::segment(2) == 'klien') show @endif" id="klien">
             <ul class="nav nav-collapse">
               
-              <li @if(Request::segment(2) == 'anggota' && Request::segment(3) == '') class="active" @endif>
+              <li @if(Request::segment(2) == 'klien' && Request::segment(3) == '') class="active" @endif>
                 <a href="{{ auth()->user()->hasRole('admin') ? route('admin.anggota') : route('admin.anggota') }}">
-                  <span class="sub-item">Semua Anggota</span>
+                  <span class="sub-item">Tambah Klien Baru</span>
                 </a>
               </li>
 
               <li @if(Request::segment(3) == 'baru') class="active" @endif>
                 <a href="{{ auth()->user()->hasRole('admin') ? route('admin.anggota.baru') : route('admin.anggota.baru') }}">
-                  <span class="sub-item">Anggota Baru</span>
-                </a>
-              </li>
-
-              <li @if(Request::segment(3) == 'pindahmasuk') class="active" @endif>
-                <a href="{{ auth()->user()->hasRole('admin') ? route('admin.anggota.pindahMasuk') : route('admin.anggota.pindahMasuk') }}">
-                  <span class="sub-item">Pindah Masuk</span>
-                </a>
-              </li>
-
-              <li @if(Request::segment(3) == 'pindahkeluar') class="active" @endif>
-                <a href="{{ auth()->user()->hasRole('admin') ? route('admin.anggota.pindahKeluar') : route('admin.anggota.pindahKeluar') }}">
-                  <span class="sub-item">Pindah Keluar</span>
-                </a>
-              </li>
-
-              <li @if(Request::segment(3) == 'aktif') class="active" @endif>
-                <a href="{{ auth()->user()->hasRole('admin') ? route('admin.anggota.aktif') : route('admin.anggota.aktif') }}">
-                  <span class="sub-item">Aktif</span>
-                </a>
-              </li>
-
-              <li @if(Request::segment(3) == 'alumni') class="active" @endif>
-                <a href="{{ auth()->user()->hasRole('admin') ? route('admin.anggota.alumni') : route('admin.anggota.alumni') }}">
-                  <span class="sub-item">Alumni</span>
-                </a>
-              </li>
-
-              <li @if(Request::segment(3) == 'draft') class="active" @endif>
-                <a href="{{ auth()->user()->hasRole('admin') ? route('admin.anggota.draft') : route('admin.anggota.draft') }}">
-                  <span class="sub-item">Draft</span>
+                  <span class="sub-item">Data Klien</span>
                 </a>
               </li>
 
@@ -162,6 +132,33 @@
           </div>
         </li>
 
+      
+
+        <!-- kasus -->
+        <li class="nav-item submenu @if(Request::segment(2) == 'kasus') active @endif" ">
+          <a data-bs-toggle="collapse" href="#kasus" class="collapsed" aria-expanded="false">
+            <i class="fas fa-file"></i>
+            <p>Kasus</p>
+            <span class="caret"></span>
+          </a>
+          <div class="collapse @if(Request::segment(2) == 'kasus') show @endif" id="kasus">
+            <ul class="nav nav-collapse">
+              
+              <li @if(Request::segment(2) == 'kasus' && Request::segment(3) == '') class="active" @endif>
+                <a href="{{ auth()->user()->hasRole('admin') ? route('admin.anggota') : route('admin.anggota') }}">
+                  <span class="sub-item">Tambah Kasus Baru</span>
+                </a>
+              </li>
+
+              <li @if(Request::segment(3) == 'baru') class="active" @endif>
+                <a href="{{ auth()->user()->hasRole('admin') ? route('admin.anggota.baru') : route('admin.anggota.baru') }}">
+                  <span class="sub-item">Data Kasus</span>
+                </a>
+              </li>
+
+            </ul>
+          </div>
+        </li>
 
       
 
@@ -246,27 +243,6 @@
       @endif
 
       
-
-      @if(auth()->user()->hasRole('advokasi'))
-
-        <li class="nav-item active">
-          <a data-bs-toggle="collapse" href="#dasbor" class="collapsed" aria-expanded="false">
-            <i class="fas fa-home"></i>
-            <p>Dasbor</p>
-            <span class="caret"></span>
-          </a>
-          <div class="collapse @if(Request::segment(2) == 'dasbor' || Request::segment(2) == '') show @endif" id="dasbor">
-            <ul class="nav nav-collapse">
-              <li @if(Request::segment(2) == 'dasbor' || Request::segment(2) == '') class="active" @endif>
-                <a href="{{ route('advokasi.dasbor') }}">
-                  <span class="sub-item">Dasbor</span>
-                </a>
-              </li>
-            </ul>
-          </div>
-        </li>
-      
-      @endif
 
       
 
