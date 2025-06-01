@@ -14,7 +14,7 @@
                                         </div>
                                     @endif
 
-                                    @if ($errors->any())
+                                    {{-- @if ($errors->any())
                                     <div class="alert alert-danger alert-dismissible fade show" role="alert"">
                                         <strong>Terjadi kesalahan:</strong>
                                         <ul class="mb-0">
@@ -25,6 +25,6 @@
                                         
                                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                                     </div>
-                                @endif
+                                    @endif --}}
     <!-- The whole future lies in uncertainty: live immediately. - Seneca -->
 </div>

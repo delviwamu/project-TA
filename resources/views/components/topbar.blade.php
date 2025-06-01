@@ -60,7 +60,7 @@
         <!-- LOGO -->
         <div class="logo-box">
             @if(Auth::user()->hasRole('admin'))
-            <a href="{{ route('admin.dasbor') }}" class="logo logo-dark text-center"> @endif
+            <a href="/" class="logo logo-dark text-center"> @endif
             @if(Auth::user()->hasRole('operator'))
             <a href="{{ route('operator.dasbor') }}" class="logo logo-dark text-center"> @endif
                 <span class="logo-sm">
@@ -76,7 +76,7 @@
             </a>
 
             @if(Auth::user()->hasRole('admin'))
-            <a href="{{ route('admin.dasbor') }}" class="logo logo-light text-center"> @endif
+            <a href="/" class="logo logo-light text-center"> @endif
             @if(Auth::user()->hasRole('operator'))
             <a href="{{ route('operator.dasbor') }}" class="logo logo-light text-center"> @endif
                 <span class="logo-sm">
@@ -132,7 +132,7 @@
                     @if(Auth::user()->hasRole('admin'))
 
                     <li class="nav-item">
-                        <a class="nav-link @if(Request::segment(2) == '' || Request::segment(2) == 'dasbor') text-primary @endif" href="{{ route('admin.dasbor') }}">
+                        <a class="nav-link @if(Request::segment(2) == '' || Request::segment(2) == 'dasbor') text-primary @endif" href="/">
                             <i class="fe-home"></i> Dasbor
                         </a>
                     </li> <!-- end nav item-->

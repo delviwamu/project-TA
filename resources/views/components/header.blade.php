@@ -3,8 +3,8 @@
         <div class="main-header-logo">
           <!-- Logo Header -->
           <div class="logo-header" data-background-color="dark">
-            <a href="index.html" class="logo">
-              <img src="{!! $siteLogo ?? '' !!}" alt="navbar brand" class="navbar-brand" height="20" />
+            <a href="/" class="logo">
+              <img src="{!! $siteLogo ? asset($siteLogo) : env('APP_LOGO') !!}" alt="navbar brand" class="navbar-brand" height="20" />
             </a>
             <div class="nav-toggle">
               <button class="btn btn-toggle toggle-sidebar">

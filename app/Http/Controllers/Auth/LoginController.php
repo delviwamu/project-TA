@@ -79,15 +79,15 @@ class LoginController extends Controller
     private function redirectUser($user)
     {
         if ($user->hasRole('admin')) {
-            return redirect('/admin');
+            return redirect('/dasbor');
         } elseif ($user->hasRole('staf')) {
-            return redirect('/staf');
+            return redirect('/dasbor');
         } elseif ($user->hasRole('pengacara')) {
-            return redirect('/pengacara');
+            return redirect('/dasbor');
         } elseif ($user->hasRole('advokasi')) {
-            return redirect('/advokasi');
+            return redirect('/dasbor');
         } elseif ($user->hasRole('lbh')) {
-            return redirect('/lbh');
+            return redirect('/dasbor');
         }
 
         return redirect('/login'); // Redirect default jika tidak ada role

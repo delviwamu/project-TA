@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('clients', function (Blueprint $table) {
             $table->id();
+            
             $table->string('nama', 100);
             $table->string('nik', 20)->unique();
             $table->text('alamat');
@@ -20,7 +21,7 @@ return new class extends Migration
             $table->date('tanggal_input');
 
             // Relasi ke tabel users
-            $table->unsignedBigInteger('created_by'); // staf input
+            $table->unsignedBigInteger('created_by'); // staf input | berdasarkan id user
 
             $table->timestamps();
 

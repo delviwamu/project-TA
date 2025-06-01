@@ -22,7 +22,9 @@
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-body">
-                                    <p class="fs-1">Selamat datang!</p>
+                                    <p class="fs-1">
+                                        Selamat datang, {{ Auth::user()->name }}! Anda login sebagai {{ Auth::user()->getRoleNames()->first() }}
+                                    </p>
                                     <p class="fs-4 text-muted">{{ $siteDescription }}</p>
                                     <p class="fs-4 text-muted">
                                         <img src="{{ asset($siteLogo) }}" class="w-25 rounded-circle" />
