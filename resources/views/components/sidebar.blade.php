@@ -102,8 +102,8 @@
         <!-- manajemen data -->
         <li class="nav-item @if(Request::segment(1) == 'client') active @endif">
           <a data-bs-toggle="collapse" href="#client" class="collapsed" aria-expanded="false">
-            <i class="fas fa-chart-bar"></i>
-            <p>Manajemen client</p>
+            <i class="fas fa-users"></i>
+            <p>Manajemen Klien</p>
             <span class="caret"></span>
           </a>
           <div class="collapse @if(Request::segment(1) == 'client') show @endif" id="client">
@@ -118,6 +118,63 @@
               <li @if(Request::segment(1) == 'client' && Request::segment(2) == '') class="active" @endif>
                 <a href="{{ route('client.index') ? route('client.index') : route('dasbor') }}">
                   <span class="sub-item">Data Klien</span>
+                </a>
+              </li>
+              
+
+            </ul>
+          </div>
+        </li>
+
+
+
+
+        <!-- manajemen data -->
+        <li class="nav-item @if(Request::segment(1) == 'case') active @endif">
+          <a data-bs-toggle="collapse" href="#case" class="collapsed" aria-expanded="false">
+            <i class="fas fa-suitcase"></i>
+            <p>Manajemen Kasus</p>
+            <span class="caret"></span>
+          </a>
+          <div class="collapse @if(Request::segment(1) == 'case') show @endif" id="case">
+            <ul class="nav nav-collapse">
+              
+              <li @if(Request::segment(1) == 'client' && Request::segment(2) == 'create') class="active" @endif>
+                <a href="{{ route('client.create') ? route('client.create') : route('dasbor') }}">
+                  <span class="sub-item">Buat Kasus Baru</span>
+                </a>
+              </li>
+              
+              <li @if(Request::segment(1) == 'client' && Request::segment(2) == '') class="active" @endif>
+                <a href="{{ route('client.index') ? route('client.index') : route('dasbor') }}">
+                  <span class="sub-item">Data Kasus</span>
+                </a>
+              </li>
+              
+
+            </ul>
+          </div>
+        </li>
+
+        <!-- manajemen data -->
+        <li class="nav-item @if(Request::segment(1) == 'court') active @endif">
+          <a data-bs-toggle="collapse" href="#court" class="collapsed" aria-expanded="false">
+            <i class="fas fa-building"></i>
+            <p>Manajemen Sidang</p>
+            <span class="caret"></span>
+          </a>
+          <div class="collapse @if(Request::segment(1) == 'court') show @endif" id="court">
+            <ul class="nav nav-collapse">
+              
+              <li @if(Request::segment(1) == 'client' && Request::segment(2) == 'create') class="active" @endif>
+                <a href="{{ route('client.create') ? route('client.create') : route('dasbor') }}">
+                  <span class="sub-item">Buat Kasus Baru</span>
+                </a>
+              </li>
+              
+              <li @if(Request::segment(1) == 'client' && Request::segment(2) == '') class="active" @endif>
+                <a href="{{ route('client.index') ? route('client.index') : route('dasbor') }}">
+                  <span class="sub-item">Data Kasus</span>
                 </a>
               </li>
               
