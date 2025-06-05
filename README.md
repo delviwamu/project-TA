@@ -64,6 +64,12 @@ Setelah itu jalankan server, dengan cara:
 php artisan serve
 ```
 
+jalankan migrasi dan seed database
+
+```
+php artisan migrate:fresh --seed
+```
+
 
 ---
 
