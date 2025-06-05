@@ -45,16 +45,9 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    // public function klasis(){
-    //     return $this->hasMany(Klasis::class,'user_id');
-    // }
 
-    // public function jemaat(){
-    //     return $this->hasMany(Jemaat::class,'user_id');
+    // public function role(){
+    //     return $this->hasOne(Roles::class,'id','role_id');
     // }
-
-    public function role(){
-        return $this->hasOne(Roles::class,'id','role_id');
-    }
     
 }

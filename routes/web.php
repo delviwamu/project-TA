@@ -14,6 +14,7 @@ use App\Http\Controllers\ThemeController;
 
 // klien
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\ClientCaseController;
 
 Route::post('/update-theme', [ThemeController::class, 'updateTheme'])->name('update.theme');
 
@@ -39,6 +40,22 @@ Route::group(['middleware' => ['auth']], function () {
             Route::get('/{id}/edit', 'edit')->name('client.edit');
             Route::put('/{id}/update', 'update')->name('client.update');
             Route::delete('/{id}/forceDelete', 'forceDelete')->name('client.forceDelete');
+
+        });
+    });
+
+    // manajemen klien
+    Route::group(['middleware' => ['role:admin|advokasi|lbh'], 'prefix' => 'client-case'], function () {
+
+        Route::controller(ClientCaseController::class)->group(function () {
+
+            Route::get('/', 'index')->name('clientCase.index');
+            Route::get('/create', 'create')->name('clientCase.create');
+            Route::post('/store', 'store')->name('clientCase.store');
+            Route::get('/{id}/show', 'show')->name('clientCase.show');
+            Route::get('/{id}/edit', 'edit')->name('clientCase.edit');
+            Route::put('/{id}/update', 'update')->name('clientCase.update');
+            Route::delete('/{id}/forceDelete', 'forceDelete')->name('clientCase.forceDelete');
 
         });
     });

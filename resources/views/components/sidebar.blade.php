@@ -132,25 +132,25 @@
 
 
         <!-- manajemen data -->
-        <li class="nav-item @if(Request::segment(1) == 'case') active @endif">
+        <li class="nav-item @if(Request::segment(1) == 'client-case') active @endif">
           <a data-bs-toggle="collapse" href="#case" class="collapsed" aria-expanded="false">
             <i class="fas fa-suitcase"></i>
             <p>Manajemen Kasus</p>
             <span class="caret"></span>
           </a>
-          <div class="collapse @if(Request::segment(1) == 'case') show @endif" id="case">
+          <div class="collapse @if(Request::segment(1) == 'client-case') show @endif" id="case">
             <ul class="nav nav-collapse">
               
               @if(auth()->user()->hasRole('admin') || auth()->user()->hasRole('advokasi'))
-              <li @if(Request::segment(1) == 'client' && Request::segment(2) == 'create') class="active" @endif>
-                <a href="{{ route('client.create') ? route('client.create') : route('dasbor') }}">
+              <li @if(Request::segment(1) == 'client-case' && Request::segment(2) == 'create') class="active" @endif>
+                <a href="{{ route('clientCase.create') ? route('clientCase.create') : route('dasbor') }}">
                   <span class="sub-item">Buat Kasus Baru</span>
                 </a>
               </li>
               @endif
               
-              <li @if(Request::segment(1) == 'client' && Request::segment(2) == '') class="active" @endif>
-                <a href="{{ route('client.index') ? route('client.index') : route('dasbor') }}">
+              <li @if(Request::segment(1) == 'client-case' && Request::segment(2) == '') class="active" @endif>
+                <a href="{{ route('clientCase.index') ? route('clientCase.index') : route('dasbor') }}">
                   <span class="sub-item">Data Kasus</span>
                 </a>
               </li>
@@ -172,14 +172,14 @@
               
               @if(auth()->user()->hasRole('admin') || auth()->user()->hasRole('advokasi'))
               <li @if(Request::segment(1) == 'client' && Request::segment(2) == 'create') class="active" @endif>
-                <a href="{{ route('client.create') ? route('client.create') : route('dasbor') }}">
+                <a href="{{ route('clientCase.create') ? route('clientCase.create') : route('dasbor') }}">
                   <span class="sub-item">Buat Kasus Baru</span>
                 </a>
               </li>
               @endif 
               
               <li @if(Request::segment(1) == 'client' && Request::segment(2) == '') class="active" @endif>
-                <a href="{{ route('client.index') ? route('client.index') : route('dasbor') }}">
+                <a href="{{ route('clientCase.index') ? route('clientCase.index') : route('dasbor') }}">
                   <span class="sub-item">Data Kasus</span>
                 </a>
               </li>

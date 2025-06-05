@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class ClientCase extends Model
 {
     use HasFactory;
+
+    protected $guarded = [];
+
+    // Relasi many-to-one: satu ClientCase hanya punya satu Client
+    public function client()
+    {
+        return $this->belongsTo(Client::class, 'client_id', 'id');
+    }
 }

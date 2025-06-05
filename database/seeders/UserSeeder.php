@@ -47,6 +47,16 @@ class UserSeeder extends Seeder
         ]);
         $pengacara->assignRole('pengacara');
 
+        // user role: pengacara
+        $pengacara = User::create([
+            'name' => 'Pengacara Hukum 2',
+            'username' => 'pengacara2',
+            'email' => 'pengacara2@mail.com',
+            'password' => bcrypt('pengacara2@mail.com'),
+            'avatar' => 'assets/img/avatars/avatar-2-woman.jpeg',
+        ]);
+        $pengacara->assignRole('pengacara');
+
         // user role: kepala_advokasi
         $kepalaAdvokasi = User::create([
             'name' => 'Kepala Bidang Advokasi',
