@@ -118,6 +118,7 @@
                                         <i class="fa fa-times-circle"></i> Tutup 
                                     </a>
 
+                                    
                                     @if(Request::segment(2) == 'edit')
                                     <!-- Tombol Hapus Permanen -->
                                     <a href="#" class="btn" data-bs-toggle="modal" data-bs-target="#forceDeleteModal{{ $data->id }}" title="Hapus Permanen">

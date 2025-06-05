@@ -3,7 +3,7 @@
   <div class="sidebar-logo">
     <!-- Logo Header -->
     <div class="logo-header" data-background-color="dark">
-      <a href="{{ Auth::user()->getRoleNames()->first() }}" class="logo">
+      <a href="{{ route('dasbor') }}" class="logo">
         <img src="{!! $siteLogo ? asset($siteLogo) : env('APP_LOGO') !!}" alt="navbar brand" class="navbar-brand" height="20" />
         <span class="text-light ps-2">{!! $siteTitle ?? 'site title' !!}</span>
       </a>
@@ -109,11 +109,13 @@
           <div class="collapse @if(Request::segment(1) == 'client') show @endif" id="client">
             <ul class="nav nav-collapse">
               
+              @if(auth()->user()->hasRole('admin') || auth()->user()->hasRole('advokasi'))
               <li @if(Request::segment(1) == 'client' && Request::segment(2) == 'create') class="active" @endif>
                 <a href="{{ route('client.create') ? route('client.create') : route('dasbor') }}">
                   <span class="sub-item">Buat Klien Baru</span>
                 </a>
               </li>
+              @endif
               
               <li @if(Request::segment(1) == 'client' && Request::segment(2) == '') class="active" @endif>
                 <a href="{{ route('client.index') ? route('client.index') : route('dasbor') }}">
@@ -139,11 +141,13 @@
           <div class="collapse @if(Request::segment(1) == 'case') show @endif" id="case">
             <ul class="nav nav-collapse">
               
+              @if(auth()->user()->hasRole('admin') || auth()->user()->hasRole('advokasi'))
               <li @if(Request::segment(1) == 'client' && Request::segment(2) == 'create') class="active" @endif>
                 <a href="{{ route('client.create') ? route('client.create') : route('dasbor') }}">
                   <span class="sub-item">Buat Kasus Baru</span>
                 </a>
               </li>
+              @endif
               
               <li @if(Request::segment(1) == 'client' && Request::segment(2) == '') class="active" @endif>
                 <a href="{{ route('client.index') ? route('client.index') : route('dasbor') }}">
@@ -166,11 +170,13 @@
           <div class="collapse @if(Request::segment(1) == 'court') show @endif" id="court">
             <ul class="nav nav-collapse">
               
+              @if(auth()->user()->hasRole('admin') || auth()->user()->hasRole('advokasi'))
               <li @if(Request::segment(1) == 'client' && Request::segment(2) == 'create') class="active" @endif>
                 <a href="{{ route('client.create') ? route('client.create') : route('dasbor') }}">
                   <span class="sub-item">Buat Kasus Baru</span>
                 </a>
               </li>
+              @endif 
               
               <li @if(Request::segment(1) == 'client' && Request::segment(2) == '') class="active" @endif>
                 <a href="{{ route('client.index') ? route('client.index') : route('dasbor') }}">

@@ -28,7 +28,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/dasbor', [DasborController::class, 'index'])->name('dasbor');
 
     // manajemen klien
-    Route::group(['middleware' => ['role:admin|advokasi'], 'prefix' => 'client'], function () {
+    Route::group(['middleware' => ['role:admin|advokasi|lbh'], 'prefix' => 'client'], function () {
 
         Route::controller(ClientController::class)->group(function () {
 

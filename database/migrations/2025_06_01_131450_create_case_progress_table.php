@@ -19,6 +19,7 @@ return new class extends Migration
             $table->text('deskripsi');
             $table->date('tanggal');
             $table->string('lampiran', 255)->nullable();
+            $table->mediumText('keterangan')->nullable();
 
             $table->timestamps();
 

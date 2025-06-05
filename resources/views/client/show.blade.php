@@ -48,10 +48,12 @@
                             <hr class="my-4 d-block">
 
                             <div class="form-group">
+                                @if(auth()->user()->hasRole('admin') || auth()->user()->hasRole('advokasi'))
                                 <!-- Tombol Ubah -->
                                 <a href="{{ route('client.edit', $data->id) }}" class="btn btn-dark text-primary">
                                     <i class="fa fa-edit"></i> Ubah
                                 </a>
+                                @endif
 
                             <!-- Tombol Kembali -->
                                 <a href="{{ route('client.index') }}" class="btn">
