@@ -25,6 +25,7 @@ class ClientController extends Controller
         $datas = Client::when($search, function ($query, $search) {
                 return $query->where('nama', 'like', "%{$search}%");
             })
+            ->orderBy('id', 'desc')
             ->paginate(5)
             ->withQueryString(); // supaya query string search tetap ada saat paginasi
 
@@ -140,7 +141,7 @@ class ClientController extends Controller
 
         $client->update($validated);
 
-        return redirect()->back()->with('success', 'Data berhasil diperbarui.');
+        return redirect()->route('client.show', $client->id)->with('success', 'Data berhasil diperbarui.');
     }
 
     // forceDelete

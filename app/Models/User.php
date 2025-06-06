@@ -44,6 +44,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+    
+    public function client_cases()
+    {
+        return $this->hasMany(ClientCase::class, 'pengacara_id', 'id');
+    }
 
 
     // public function role(){
