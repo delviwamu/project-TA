@@ -15,6 +15,7 @@ use App\Http\Controllers\ThemeController;
 // klien
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\ClientCaseController;
+use App\Http\Controllers\CourtSessionController;
 
 Route::post('/update-theme', [ThemeController::class, 'updateTheme'])->name('update.theme');
 
@@ -56,6 +57,22 @@ Route::group(['middleware' => ['auth']], function () {
             Route::get('/{id}/edit', 'edit')->name('clientCase.edit');
             Route::put('/{id}/update', 'update')->name('clientCase.update');
             Route::delete('/{id}/forceDelete', 'forceDelete')->name('clientCase.forceDelete');
+
+        });
+    });
+
+    // manajemen sidang
+    Route::group(['middleware' => ['role:admin|advokasi|lbh'], 'prefix' => 'court-session'], function () {
+
+        Route::controller(CourtSessionController::class)->group(function () {
+
+            Route::get('/', 'index')->name('courtSession.index');
+            Route::get('/create', 'create')->name('courtSession.create');
+            Route::post('/store', 'store')->name('courtSession.store');
+            Route::get('/{id}/show', 'show')->name('courtSession.show');
+            Route::get('/{id}/edit', 'edit')->name('courtSession.edit');
+            Route::put('/{id}/update', 'update')->name('courtSession.update');
+            Route::delete('/{id}/forceDelete', 'forceDelete')->name('courtSession.forceDelete');
 
         });
     });

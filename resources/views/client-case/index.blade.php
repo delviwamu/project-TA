@@ -85,7 +85,6 @@
                                                     </td>
                                                 </tr>
 
-                                                {{-- Modal untuk hapus permanen --}}
                                                 <x-force-delete-modal 
                                                     :id="$item->id" 
                                                     :nama="$item->judul_kasus" 

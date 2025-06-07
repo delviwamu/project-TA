@@ -161,26 +161,26 @@
         </li>
 
         <!-- manajemen data -->
-        <li class="nav-item @if(Request::segment(1) == 'court') active @endif">
+        <li class="nav-item @if(Request::segment(1) == 'court-session') active @endif">
           <a data-bs-toggle="collapse" href="#court" class="collapsed" aria-expanded="false">
             <i class="fas fa-building"></i>
             <p>Manajemen Sidang</p>
             <span class="caret"></span>
           </a>
-          <div class="collapse @if(Request::segment(1) == 'court') show @endif" id="court">
+          <div class="collapse @if(Request::segment(1) == 'court-session') show @endif" id="court">
             <ul class="nav nav-collapse">
               
               @if(auth()->user()->hasRole('admin') || auth()->user()->hasRole('advokasi'))
-              <li @if(Request::segment(1) == 'client' && Request::segment(2) == 'create') class="active" @endif>
-                <a href="{{ route('clientCase.create') ? route('clientCase.create') : route('dasbor') }}">
-                  <span class="sub-item">Buat Kasus Baru</span>
+              <li @if(Request::segment(1) == 'court-session' && Request::segment(2) == 'create') class="active" @endif>
+                <a href="{{ route('courtSession.create') ? route('courtSession.create') : route('dasbor') }}">
+                  <span class="sub-item">Buat Sidang Baru</span>
                 </a>
               </li>
               @endif 
               
-              <li @if(Request::segment(1) == 'client' && Request::segment(2) == '') class="active" @endif>
-                <a href="{{ route('clientCase.index') ? route('clientCase.index') : route('dasbor') }}">
-                  <span class="sub-item">Data Kasus</span>
+              <li @if(Request::segment(1) == 'court-session' && Request::segment(2) == '') class="active" @endif>
+                <a href="{{ route('courtSession.index') ? route('courtSession.index') : route('dasbor') }}">
+                  <span class="sub-item">Data Sidang</span>
                 </a>
               </li>
               

@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class CourtSession extends Model
 {
     use HasFactory;
+
+    protected $guarded = [];
+
+    public function case()
+    {
+        return $this->belongsTo(ClientCase::class, 'case_id');
+    }
 }

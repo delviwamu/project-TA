@@ -17,9 +17,10 @@ return new class extends Migration
             $table->unsignedBigInteger('client_id');
             $table->string('judul_kasus', 150);
             $table->enum('jenis_kasus', ['pidana', 'perdata', 'keluarga', 'lainnya']);
-            $table->text('kronologi');
+            $table->text('kronologi')->nullable();
             $table->enum('status', ['baru', 'berjalan', 'selesai', 'ditolak'])->default('baru');
 
+            $table->unsignedBigInteger('created_by')->default('1'); 
             $table->unsignedBigInteger('pengacara_id');
             $table->unsignedBigInteger('kepala_advokasi_id');
 
@@ -29,6 +30,7 @@ return new class extends Migration
             $table->timestamps();
 
             // Foreign key constraints
+            $table->foreign('created_by')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('client_id')->references('id')->on('clients')->onDelete('cascade');
             $table->foreign('pengacara_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('kepala_advokasi_id')->references('id')->on('users')->onDelete('cascade');
