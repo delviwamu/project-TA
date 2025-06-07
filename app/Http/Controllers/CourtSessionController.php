@@ -150,11 +150,12 @@ class CourtSessionController extends Controller
     }
 
 
-    public function destroy($id)
+    // forceDelete
+    public function forceDelete($id)
     {
         $data = CourtSession::findOrFail($id);
-        $data->delete();
+        $data->forceDelete();
 
-        return redirect()->back()->with('success', 'Data sidang berhasil dihapus.');
+        return redirect()->back()->with('success', 'Data berhasil dihapus permanen.');
     }
 }
