@@ -112,19 +112,14 @@
                                     <button type="submit" class="btn btn-dark text-primary" id="submitButton">
                                         <i class="fa fa-save"></i> Simpan
                                     </button>
-
-                                    <!-- Tombol Kembali -->
+                                    @if(isset($data))
+                                    <a href="{{ route('client.show', $data->id) }}" class="btn text-muted">
+                                        <i class="fa fa-eye"></i> Detail
+                                    </a>
+                                    @endif
                                     <a href="{{ route('client.index') }}" class="btn">
                                         <i class="fa fa-times-circle"></i> Tutup 
                                     </a>
-
-                                    
-                                    @if(Request::segment(2) == 'edit')
-                                    <!-- Tombol Hapus Permanen -->
-                                    <a href="#" class="btn" data-bs-toggle="modal" data-bs-target="#forceDeleteModal{{ $data->id }}" title="Hapus Permanen">
-                                        <i class="fa fa-trash"></i>
-                                    </a>
-                                    @endif
                                 </div>
                             </form>
                             <!-- form end -->

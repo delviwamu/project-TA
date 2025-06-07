@@ -63,7 +63,7 @@
                                                     </td>
                                                     <td>{{ $item->client->nama ?? '-' }}</td>
                                                     <td>{{ $item->pengacara->name ?? '-' }}</td>
-                                                    <td>{{ $item->kepala_advokasi->name ?? '-' }}</td>
+                                                    <td>{{ $item->kepalaAdvokasi->name ?? '-' }}</td>
                                                     <td>{{ \Carbon\Carbon::parse($item->tanggal_mulai)->format('d-m-Y') }}</td>
                                                     <td>{{ $item->tanggal_selesai ? \Carbon\Carbon::parse($item->tanggal_selesai)->format('d-m-Y') : '-' }}</td>
                                                     <td>

@@ -17,7 +17,7 @@ class ClientCase extends Model
         return $this->belongsTo(Client::class, 'client_id', 'id');
     }
     
-    public function kepala_advokasi()
+    public function kepalaAdvokasi()
     {
         return $this->belongsTo(User::class, 'kepala_advokasi_id', 'id');
     }

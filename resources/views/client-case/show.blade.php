@@ -21,28 +21,50 @@
 
                             <!-- Detail Data Start -->
                             <div class="form-group">
-                                <label>Nama Lengkap</label>
-                                <p class="form-control-plaintext">{{ $data->nama }}</p>
+                                <label>Klien</label>
+                                <p class="form-control-plaintext">{{ $data->client->nama ?? '-' }}</p>
                             </div>
 
                             <div class="form-group">
-                                <label>NIK</label>
-                                <p class="form-control-plaintext">{{ $data->nik }}</p>
+                                <label>Judul Kasus</label>
+                                <p class="form-control-plaintext">{{ $data->judul_kasus }}</p>
                             </div>
 
                             <div class="form-group">
-                                <label>Alamat</label>
-                                <p class="form-control-plaintext">{{ $data->alamat }}</p>
+                                <label>Jenis Kasus</label>
+                                <p class="form-control-plaintext text-capitalize">{{ $data->jenis_kasus }}</p>
                             </div>
 
                             <div class="form-group">
-                                <label>No. HP</label>
-                                <p class="form-control-plaintext">{{ $data->no_hp }}</p>
+                                <label>Kronologi</label>
+                                <p class="form-control-plaintext">{{ $data->kronologi }}</p>
                             </div>
 
                             <div class="form-group">
-                                <label>Tanggal Input</label>
-                                <p class="form-control-plaintext">{{ \Carbon\Carbon::parse($data->tanggal_input)->format('d-m-Y') }}</p>
+                                <label>Status</label>
+                                <p class="form-control-plaintext text-capitalize">{{ $data->status }}</p>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Pengacara</label>
+                                <p class="form-control-plaintext">{{ $data->pengacara->name ?? '-' }}</p>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Kepala Advokasi</label>
+                                <p class="form-control-plaintext">{{ $data->kepalaAdvokasi->name ?? '-' }}</p>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Tanggal Mulai</label>
+                                <p class="form-control-plaintext">{{ \Carbon\Carbon::parse($data->tanggal_mulai)->format('d M Y') }}</p>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Tanggal Selesai</label>
+                                <p class="form-control-plaintext">
+                                    {{ $data->tanggal_selesai ? \Carbon\Carbon::parse($data->tanggal_selesai)->format('d M Y') : '-' }}
+                                </p>
                             </div>
 
                             <hr class="my-4 d-block">
@@ -50,13 +72,13 @@
                             <div class="form-group">
                                 @if(auth()->user()->hasRole('admin') || auth()->user()->hasRole('advokasi'))
                                 <!-- Tombol Ubah -->
-                                <a href="{{ route('client.edit', $data->id) }}" class="btn btn-dark text-primary">
+                                <a href="{{ route('clientCase.edit', $data->id) }}" class="btn btn-dark text-primary">
                                     <i class="fa fa-edit"></i> Ubah
                                 </a>
                                 @endif
 
                             <!-- Tombol Kembali -->
-                                <a href="{{ route('client.index') }}" class="btn">
+                                <a href="{{ route('clientCase.index') }}" class="btn">
                                     <i class="fa fa-times-circle"></i> Tutup
                                 </a>
                             </div>

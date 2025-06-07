@@ -23,6 +23,7 @@ class ClientCaseController extends Controller
             ->when($search, function ($query, $search) {
                 return $query->where('judul_kasus', 'like', "%{$search}%");
             })
+            ->orderBy('id','desc')
             ->paginate(5)
             ->withQueryString();
 
@@ -41,7 +42,6 @@ class ClientCaseController extends Controller
         $clients = Client::all();
         $dataKepalaAdvokasi = User::role('advokasi')->get();
         $dataPengacara = User::role('pengacara')->get();
-        // $kepalaAdvokasis = User::all(); // filter jika perlu
 
         return view('client-case.form', compact(
             'pageTitle',
@@ -91,17 +91,18 @@ class ClientCaseController extends Controller
         $pageDescription = 'Formulir ubah data kasus.';
 
         $data = ClientCase::findOrFail($id);
+
         $clients = Client::all();
-        $pengacaras = User::all();
-        $kepalaAdvokasis = User::all();
+        $dataKepalaAdvokasi = User::role('advokasi')->get();
+        $dataPengacara = User::role('pengacara')->get();
 
         return view('client-case.form', compact(
             'pageTitle',
             'pageDescription',
             'data',
             'clients',
-            'pengacaras',
-            'kepalaAdvokasis',
+            'dataKepalaAdvokasi',
+            'dataPengacara',
         ));
     }
 
@@ -123,14 +124,15 @@ class ClientCaseController extends Controller
 
         $clientCase->update($validated);
 
-        return redirect()->back()->with('success', 'Data kasus berhasil diperbarui.');
+        return redirect()->route('clientCase.show', $clientCase->id)->with('success', 'Data kasus berhasil diperbarui.');
     }
 
-    public function destroy($id)
+    // forceDelete
+    public function forceDelete($id)
     {
-        $clientCase = ClientCase::findOrFail($id);
-        $clientCase->delete();
+        $data = ClientCase::findOrFail($id);
+        $data->forceDelete();
 
-        return redirect()->back()->with('success', 'Data kasus berhasil dihapus.');
+        return redirect()->back()->with('success', 'Data berhasil dihapus permanen.');
     }
 }
