@@ -1,5 +1,18 @@
 # Sistem Informasi Manajemen Berkas Perkara
 
+REVISI DOSEN (18/06/2025)
+
+:: Bagian advokasi
+
+Manajemen Klien
+- ubah status langsung dari table data
+
+:: Bagian staf, kepala LBA, pengacara
+
+- Hapus menu "manajemen klien" dan langsung saja munculkan "Data Klien / Data Kasus
+- Buat ringkasan statistic 
+
+
 # 📘 Git Dasar - Panduan Singkat
 
 Dokumentasi ini berisi kumpulan perintah Git yang sering digunakan untuk mengelola repository versi kontrol.
