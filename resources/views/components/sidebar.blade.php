@@ -24,29 +24,14 @@
   <div class="sidebar-wrapper scrollbar scrollbar-inner">
     <div class="sidebar-content">
       <ul class="nav nav-secondary">
-      
-      @if(auth()->user()->hasRole('admin') || auth()->user()->hasRole('advokasi'))
-
-      @endif
 
         <li class="nav-item active">
-          <a data-bs-toggle="collapse" href="#dasbor" class="collapsed" aria-expanded="false">
-            <i class="fas fa-home"></i>
-            <p>Dasbor</p>
-            <span class="caret"></span>
-          </a>
-          <div class="collapse @if(Request::segment(2) == 'dasbor' || Request::segment(2) == '') show @endif" id="dasbor">
-            <ul class="nav nav-collapse">
-              <li @if(Request::segment(2) == 'dasbor' || Request::segment(2) == '') class="active" @endif>
-                <a href="{{ auth()->user()->hasRole('admin') ? route('dasbor') : route('dasbor') }}">
-                  <span class="sub-item">Dasbor</span>
-                </a>
-              </li>
-            </ul>
-          </div>
+          <a href="{{ auth()->user()->hasRole('admin') ? route('dasbor') : route('dasbor') }}">
+              <i class="fas fa-home"></i> <span class="sub-item">Dasbor</span>
+            </a>
         </li>
 
-
+        
 
 
 
@@ -58,27 +43,33 @@
         </li>
 
 
-      
+        @if(auth()->user()->hasRole('admin') || auth()->user()->hasRole('advokasi') || auth()->user()->hasRole('staf') || auth()->user()->hasRole('pengacara') || auth()->user()->hasRole('lbh'))
 
-        <!-- Ringkasan Statistik -->
+        <!-- Statistik -->
         <li class="nav-item @if(Request::segment(2) == 'statistik') active @endif">
           <a data-bs-toggle="collapse" href="#ringkasan-statistik" class="collapsed" aria-expanded="false">
             <i class="fas fa-chart-bar"></i>
             <p>Ringkasan Statistik</p>
             <span class="caret"></span>
           </a>
-          <div class="collapse @if(Request::segment(2) == 'statistik') show @endif" id="ringkasan-statistik">
+          <div class="collapse @if(Request::segment(1) == 'statistik') show @endif" id="ringkasan-statistik">
             <ul class="nav nav-collapse">
               
-              <li @if(Request::segment(2) == 'statistik' && Request::segment(3) == 'anggota') class="active" @endif">
-                <a href="{{ auth()->user()->hasRole('admin') ? route('dasbor') : route('dasbor') }}">
+              <li @if(Request::segment(1) == 'statistik' && Request::segment(2) == 'client') class="active" @endif">
+                <a href="{{ auth()->user()->hasRole('admin') ? route('statistik.client.index') : route('statistik.client.index') }}">
                   <span class="sub-item">Statistik Klien</span>
                 </a>
               </li>
               
-              <li @if(Request::segment(2) == 'statistik' && Request::segment(3) == 'anggota') class="active" @endif">
+              <li @if(Request::segment(1) == 'statistik' && Request::segment(2) == 'client-case') class="active" @endif">
                 <a href="{{ auth()->user()->hasRole('admin') ? route('dasbor') : route('dasbor') }}">
-                  <span class="sub-item">Statistik Kasus Berdasarkan Status</span>
+                  <span class="sub-item">Statistik Kasus</span>
+                </a>
+              </li>
+              
+              <li @if(Request::segment(1) == 'statistik' && Request::segment(2) == 'court-session') class="active" @endif">
+                <a href="{{ auth()->user()->hasRole('admin') ? route('dasbor') : route('dasbor') }}">
+                  <span class="sub-item">Statistik Sidang</span>
                 </a>
               </li>
               
@@ -86,6 +77,12 @@
             </ul>
           </div>
         </li>
+
+        @endif
+
+        
+      
+        @if(auth()->user()->hasRole('admin') || auth()->user()->hasRole('advokasi'))
 
 
 
@@ -95,9 +92,6 @@
           </span>
           <h4 class="text-section">Manajemen Data</h4>
         </li>
-
-
-
 
         <!-- manajemen data -->
         <li class="nav-item @if(Request::segment(1) == 'client') active @endif">
@@ -127,9 +121,6 @@
             </ul>
           </div>
         </li>
-
-
-
 
         <!-- manajemen data -->
         <li class="nav-item @if(Request::segment(1) == 'client-case') active @endif">
@@ -188,6 +179,30 @@
             </ul>
           </div>
         </li>
+
+        @endif
+
+        @if(auth()->user()->hasRole('staf') || auth()->user()->hasRole('lbh'))
+
+        <li class="nav-item  @if(Request::segment(1) == 'client') active @endif">
+          <a href="{{ route('client.index') ? route('client.index') : route('dasbor') }}">
+              <i class="fas fa-users"></i> <span class="sub-item">Data Klien</span>
+            </a>
+        </li>
+
+        <li class="nav-item  @if(Request::segment(1) == 'client-case') active @endif">
+          <a href="{{ route('clientCase.index') ? route('clientCase.index') : route('dasbor') }}">
+              <i class="fas fa-suitcase"></i> <span class="sub-item">Data Kasus</span>
+            </a>
+        </li>
+
+        <li class="nav-item  @if(Request::segment(1) == 'court-session') active @endif">
+          <a href="{{ route('courtSession.index') ? route('courtSession.index') : route('dasbor') }}">
+              <i class="fas fa-building"></i> <span class="sub-item">Data Sidang</span>
+            </a>
+        </li>
+
+        @endif
            
             
       </ul>

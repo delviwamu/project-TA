@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "TA Delvi",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}
