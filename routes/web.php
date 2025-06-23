@@ -19,6 +19,8 @@ use App\Http\Controllers\CourtSessionController;
 
 // statistik
 use App\Http\Controllers\statistik\StatistikClientController;
+use App\Http\Controllers\statistik\StatistikCaseController;
+use App\Http\Controllers\statistik\StatistikCourtController;
 
 Route::post('/update-theme', [ThemeController::class, 'updateTheme'])->name('update.theme');
 
@@ -40,6 +42,18 @@ Route::group(['middleware' => ['auth']], function () {
             Route::get('/client', 'index')->name('statistik.client.index')->middleware('role:admin|advokasi|lbh|staf');
             Route::get('api/client', 'statistikClientBerdasarkanBulan')->middleware('role:admin|advokasi|lbh|staf');
         });
+
+        // statistik kasus
+        Route::controller(StatistikCaseController::class)->group(function () {
+            Route::get('/case', 'index')->name('statistik.clientCase.index')->middleware('role:admin|advokasi|lbh|staf');
+            Route::get('api/case', 'statistikCaseBerdasarkanBulan')->middleware('role:admin|advokasi|lbh|staf');
+        });     
+
+        // statistik sidang
+        Route::controller(StatistikCourtController::class)->group(function () {
+            Route::get('/court', 'index')->name('statistik.clientCourt.index')->middleware('role:admin|advokasi|lbh|staf');
+            Route::get('api/court', 'statistikCourtBerdasarkanBulan')->middleware('role:admin|advokasi|lbh|staf');
+        });   
 
 
     });

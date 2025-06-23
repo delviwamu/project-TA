@@ -61,14 +61,14 @@
                 </a>
               </li>
               
-              <li @if(Request::segment(1) == 'statistik' && Request::segment(2) == 'client-case') class="active" @endif">
-                <a href="{{ auth()->user()->hasRole('admin') ? route('dasbor') : route('dasbor') }}">
+              <li @if(Request::segment(1) == 'statistik' && Request::segment(2) == 'case') class="active" @endif">
+                <a href="{{ auth()->user()->hasRole('admin') ? route('statistik.clientCase.index') : route('statistik.clientCase.index') }}">
                   <span class="sub-item">Statistik Kasus</span>
                 </a>
               </li>
               
-              <li @if(Request::segment(1) == 'statistik' && Request::segment(2) == 'court-session') class="active" @endif">
-                <a href="{{ auth()->user()->hasRole('admin') ? route('dasbor') : route('dasbor') }}">
+              <li @if(Request::segment(1) == 'statistik' && Request::segment(2) == 'court') class="active" @endif">
+                <a href="{{ auth()->user()->hasRole('admin') ? route('statistik.clientCourt.index') : route('statistik.clientCourt.index') }}">
                   <span class="sub-item">Statistik Sidang</span>
                 </a>
               </li>
