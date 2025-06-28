@@ -19,7 +19,7 @@
 
                             <x-alert />
 
-                            <form action="{{ isset($data) ? route('clientCase.update', $data->id) : route('clientCase.store') }}" method="POST">
+                            <form action="{{ isset($data) ? route('clientCase.update', $data->id) : route('clientCase.store') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 @if(isset($data))
                                     @method('PUT')
@@ -75,6 +75,24 @@
                                     @error('kronologi')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
+                                </div>
+
+                                <!-- Bukti Kasus -->
+                                <div class="form-group">
+                                    <label for="bukti_kasus">Bukti Kasus</label>
+                                    @if (!empty($data->bukti_kasus) && \Illuminate\Support\Facades\Storage::disk('public')->exists($data->bukti_kasus))
+                                        <div class="my-2">
+                                            <a href="{{ asset('storage/' . $data->bukti_kasus) }}" class="btn btn-sm btn-outline-primary" target="_blank">
+                                                📎 Unduh Bukti Kasus
+                                            </a>
+                                        </div>
+                                    @endif
+                                    <input type="file" class="form-control @error('bukti_kasus') is-invalid @enderror" name="bukti_kasus" id="bukti_kasus">
+                                    @error('bukti_kasus')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                    <p class="mt-3" style="font-size: 0.7rem">Unggah bukti kasus jika ingin mengganti file yang baru</p>
+
                                 </div>
 
                                 <!-- Status -->

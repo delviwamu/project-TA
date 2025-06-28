@@ -52,6 +52,7 @@ class ClientCaseController extends Controller
         ));
     }
 
+
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -64,12 +65,22 @@ class ClientCaseController extends Controller
             'kepala_advokasi_id' => 'required|exists:users,id',
             'tanggal_mulai' => 'required|date',
             'tanggal_selesai' => 'nullable|date|after_or_equal:tanggal_mulai',
+            'bukti_kasus' => 'nullable|file|mimes:pdf,doc,docx,xls,xlsx|max:5120',
         ]);
+
+        if ($request->hasFile('bukti_kasus')) {
+            $file = $request->file('bukti_kasus');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $path = $file->storeAs('bukti_kasus', $filename, 'public');
+
+            $validated['bukti_kasus'] = $path;
+        }
 
         ClientCase::create($validated);
 
         return redirect()->route('clientCase.index')->with('success', 'Kasus berhasil ditambahkan.');
     }
+
 
     public function show($id)
     {
@@ -120,7 +131,23 @@ class ClientCaseController extends Controller
             'kepala_advokasi_id' => 'required|exists:users,id',
             'tanggal_mulai' => 'required|date',
             'tanggal_selesai' => 'nullable|date|after_or_equal:tanggal_mulai',
+            'bukti_kasus' => 'nullable|file|mimes:pdf,doc,docx,xls,xlsx|max:5120',
         ]);
+
+        if ($request->hasFile('bukti_kasus')) {
+            // Hapus file lama (jika ada)
+            if ($clientCase->bukti_kasus && \Storage::disk('public')->exists($clientCase->bukti_kasus)) {
+                \Storage::disk('public')->delete($clientCase->bukti_kasus);
+            }
+
+            // Simpan file baru
+            $file = $request->file('bukti_kasus');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $path = $file->storeAs('bukti_kasus', $filename, 'public');
+
+            // Masukkan ke dalam data validasi
+            $validated['bukti_kasus'] = $path;
+        }
 
         $clientCase->update($validated);
 

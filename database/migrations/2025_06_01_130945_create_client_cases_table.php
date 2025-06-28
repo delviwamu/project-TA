@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('judul_kasus', 150);
             $table->enum('jenis_kasus', ['pidana', 'perdata', 'keluarga', 'lainnya']);
             $table->text('kronologi')->nullable();
+            $table->string('bukti_kasus')->nullable();
             $table->enum('status', ['baru', 'berjalan', 'selesai', 'ditolak'])->default('baru');
 
             $table->unsignedBigInteger('created_by')->default('1'); 

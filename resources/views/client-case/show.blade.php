@@ -41,6 +41,19 @@
                             </div>
 
                             <div class="form-group">
+                                <label>Bukti Kasus</label>
+                                @if (!empty($data->bukti_kasus))
+                                    <p>
+                                        <a href="{{ asset('storage/' . $data->bukti_kasus) }}" target="_blank" class="btn btn-sm btn-outline-dark">
+                                            📎 Unduh Bukti Kasus
+                                        </a>
+                                    </p>
+                                @else
+                                    <p class="form-control-plaintext text-muted">Belum ada bukti kasus diunggah.</p>
+                                @endif
+                            </div>
+
+                            <div class="form-group">
                                 <label>Status</label>
                                 <p class="form-control-plaintext text-capitalize">{{ $data->status }}</p>
                             </div>
