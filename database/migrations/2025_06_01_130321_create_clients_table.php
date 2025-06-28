@@ -19,7 +19,7 @@ return new class extends Migration
             $table->text('alamat');
             $table->string('no_hp', 15);
             $table->date('tanggal_input');
-            $table->date('tempat_lahir')->nullable(); 
+            $table->string('tempat_lahir')->nullable(); 
             $table->date('tanggal_lahir')->nullable(); 
             $table->enum('jenis_kelamin', ['Laki-laki', 'Perempuan'])->nullable();
 

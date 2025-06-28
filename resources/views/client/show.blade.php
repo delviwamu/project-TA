@@ -41,6 +41,16 @@
                             </div>
 
                             <div class="form-group">
+                                <label>Tanggal Lahir</label>
+                                <p class="form-control-plaintext">{{ $data->tempat_lahir ? $data->tempat_lahir . ',' : '' }} {{ \Carbon\Carbon::parse($data->tanggal_lahir)->format('d-m-Y') }}</p>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Jenis Kelamin</label>
+                                <p class="form-control-plaintext">{{ $data->jenis_kelamin ?? '' }}</p>
+                            </div>
+
+                            <div class="form-group">
                                 <label>Tanggal Input</label>
                                 <p class="form-control-plaintext">{{ \Carbon\Carbon::parse($data->tanggal_input)->format('d-m-Y') }}</p>
                             </div>

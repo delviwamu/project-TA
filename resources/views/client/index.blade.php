@@ -44,6 +44,8 @@
                                                 <th>NIK</th>
                                                 <th>Alamat</th>
                                                 <th>Nomor HP</th>
+                                                <th>Tempat, Tanggal Lahir</th>
+                                                <th>Jenis Kelamin</th>
                                                 <th>Tanggal Input</th>
                                                 <th>Opsi</th>
                                             </tr>
@@ -56,6 +58,8 @@
                                                 <td>{!! $item->nik ?? '' !!}</td>
                                                 <td>{!! $item->alamat ?? '' !!}</td>
                                                 <td>{!! $item->no_hp ?? '' !!}</td>
+                                                <td>{{ $item->tempat_lahir ? $item->tempat_lahir . ',' : '' }} {{ \Carbon\Carbon::parse($item->tanggal_lahir)->format('d-m-Y') }}</td>
+                                                <td>{!! $item->jenis_kelamin ?? '' !!}</td>
                                                 <td>{!! $item->tanggal_input ?? '' !!}</td>
                                                 <td>
                                                 <div class="d-flex align-items-center">

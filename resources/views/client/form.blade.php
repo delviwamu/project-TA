@@ -88,6 +88,55 @@
                                     @enderror
                                 </div>
 
+                                <!-- Tempat Lahir -->
+                                <div class="form-group">
+                                    <label for="tempat_lahir">Tempat Lahir</label>
+                                    <input 
+                                        type="text" 
+                                        class="form-control @error('tempat_lahir') is-invalid @enderror" 
+                                        id="tempat_lahir" name="tempat_lahir" placeholder="Masukkan tempat lahir"
+                                        value="{{ old('tempat_lahir', isset($data) ? $data->tempat_lahir : '') }}"
+                                    >
+                                    @error('tempat_lahir')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @else
+                                        <div class="invalid-feedback">Tempat lahir wajib diisi.</div>
+                                    @enderror
+                                </div>
+
+                                <!-- Tanggal lahir -->
+                                <div class="form-group">
+                                    <label for="tanggal_lahir">Tanggal lahir</label>
+                                    <input 
+                                        type="date" 
+                                        class="form-control @error('tanggal_lahir') is-invalid @enderror" 
+                                        id="tanggal_lahir" name="tanggal_lahir"
+                                        value="{{ old('tanggal_lahir', isset($data) ? $data->tanggal_lahir : now()->toDateString()) }}"
+                                    >
+                                    @error('tanggal_lahir')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @else
+                                        <div class="invalid-feedback">Tanggal lahir wajib diisi.</div>
+                                    @enderror
+                                </div>
+
+
+                                <!-- Jenis Kelamin -->
+                                <div class="form-group">
+                                    <label for="jenis_kelamin">Jenis Kelamin</label>
+                                    <select class="form-control @error('jenis_kelamin') is-invalid @enderror" name="jenis_kelamin" id="jenis_kelamin">
+                                        <option value="">-- Pilih Jenis Kelamin --</option>
+                                        @foreach(['laki-laki', 'perempuan'] as $jenis)
+                                            <option value="{{ $jenis }}" {{ old('jenis_kelamin', $data->jenis_kelamin ?? '') == $jenis ? 'selected' : '' }}>
+                                                {{ ucfirst($jenis) }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                    @error('jenis_kelamin')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
                                 <!-- Tanggal Input -->
                                 <div class="form-group">
                                     <label for="tanggal_input">Tanggal Input</label>
@@ -103,6 +152,7 @@
                                         <div class="invalid-feedback">Tanggal input wajib diisi.</div>
                                     @enderror
                                 </div>
+
 
 
                                 <hr class="my-4 d-block">

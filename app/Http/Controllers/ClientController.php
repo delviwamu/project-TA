@@ -74,7 +74,8 @@ class ClientController extends Controller
             'tanggal_input.required' => 'Tanggal input wajib dilengkapi.',
             'tanggal_input.date' => 'Format tanggal input tidak valid.',
             'tempat_lahir.required' => 'Tempat lahir wajib dilengkapi.',
-            'tanggal_lahir.required' => 'Tempat lahir wajib dilengkapi.',
+            'tanggal_lahir.required' => 'Tanggal lahir wajib dilengkapi.',
+            'tanggal_lahir.date' => 'Format tanggal input tidak valid.',
             'jenis_kelamin.required' => 'Jenis kelamin wajib dilengkapi.',
         ]);
 
