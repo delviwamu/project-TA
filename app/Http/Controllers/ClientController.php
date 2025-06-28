@@ -58,6 +58,9 @@ class ClientController extends Controller
             'alamat' => 'required|string',
             'no_hp' => ['required', 'string', 'max:15', 'unique:clients,no_hp'],
             'tanggal_input' => 'required|date',
+            'tempat_lahir' => 'required',
+            'tanggal_lahir' => 'required|date',
+            'jenis_kelamin' => 'required',
         ], [
             'nama.required' => 'Nama wajib dilengkapi.',
             'nama.max' => 'Nama maksimal 100 karakter.',
@@ -70,6 +73,9 @@ class ClientController extends Controller
             'no_hp.unique' => 'Nomor HP sudah terdaftar.',
             'tanggal_input.required' => 'Tanggal input wajib dilengkapi.',
             'tanggal_input.date' => 'Format tanggal input tidak valid.',
+            'tempat_lahir.required' => 'Tempat lahir wajib dilengkapi.',
+            'tanggal_lahir.required' => 'Tempat lahir wajib dilengkapi.',
+            'jenis_kelamin.required' => 'Jenis kelamin wajib dilengkapi.',
         ]);
 
         // Tambahkan ID user yang sedang login

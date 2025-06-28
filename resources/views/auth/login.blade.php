@@ -42,7 +42,7 @@
 
             <!-- KIRI: Logo dan Keterangan -->
             <div class="col-lg-6 d-none d-lg-flex flex-column justify-content-center align-items-center bg-light p-4">
-                <img src="{{ asset($siteLogo) }}" alt="logo" class="w-50 mb-3 rounded-circle">
+                <img src="{{ asset($siteLogo) }}" alt="logo" class="w-50 mb-3">
                 <h2 class="text-dark text-center display-2 text-uppercase">{!! $siteTitle !!}</h2>
                 <p class="text-muted text-center h2">{!! $siteDescription !!}</p>
             </div>

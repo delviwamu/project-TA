@@ -54,8 +54,8 @@ class AppServiceProvider extends ServiceProvider
                 'siteTitle' => 'Si-Perkara',
                 'siteDescription' => 'Sistem Informasi Manajemen Berkas Perkara Lembaga Bantuan Hukum (LBH)',
 
-                'siteLogo' => 'assets/img/logo-lbh.jpeg',
-                'siteFavicon' => 'assets/img/logo-lbh.jpeg',
+                'siteLogo' => 'assets/img/logo-lbh-papua.png',
+                'siteFavicon' => 'assets/img/logo-lbh-papua.png',
 
                 'author' => 'Avelinus Korey',
 

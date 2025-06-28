@@ -27,7 +27,7 @@
                                     </p>
                                     <p class="fs-4 text-muted">{{ $siteDescription }}</p>
                                     <p class="fs-4 text-muted">
-                                        <img src="{{ asset($siteLogo) }}" class="w-25 rounded-circle" />
+                                        <img src="{{ asset($siteLogo) }}" class="w-25" />
                                     </p>
                                 </div>
                             </div>
