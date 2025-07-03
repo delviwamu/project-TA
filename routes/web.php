@@ -59,17 +59,17 @@ Route::group(['middleware' => ['auth']], function () {
     });
 
     // manajemen klien
-    Route::group(['middleware' => ['role:admin|advokasi|lbh|staf'], 'prefix' => 'client'], function () {
+    Route::group(['middleware' => ['role:admin|advokasi|lbh|staf|pengacara'], 'prefix' => 'client'], function () {
 
         Route::controller(ClientController::class)->group(function () {
 
-            Route::get('/', 'index')->name('client.index')->middleware('role:admin|advokasi|lbh|staf');
+            Route::get('/', 'index')->name('client.index')->middleware('role:admin|advokasi|lbh|staf|pengacara');
             
             // Route::middleware(['role:staf'])->get('/', 'index')->name('client.index');
 
             Route::get('/create', 'create')->name('client.create');
             Route::post('/store', 'store')->name('client.store');
-            Route::get('/{id}/show', 'show')->name('client.show')->middleware('role:admin|advokasi|lbh|staf');
+            Route::get('/{id}/show', 'show')->name('client.show')->middleware('role:admin|advokasi|lbh|staf|pengacara');
             Route::get('/{id}/edit', 'edit')->name('client.edit');
             Route::put('/{id}/update', 'update')->name('client.update');
             Route::delete('/{id}/forceDelete', 'forceDelete')->name('client.forceDelete');
@@ -78,14 +78,14 @@ Route::group(['middleware' => ['auth']], function () {
     });
 
     // manajemen kasus klien
-    Route::group(['middleware' => ['role:admin|advokasi|lbh|staf'], 'prefix' => 'client-case'], function () {
+    Route::group(['middleware' => ['role:admin|advokasi|lbh|staf|pengacara'], 'prefix' => 'client-case'], function () {
 
         Route::controller(ClientCaseController::class)->group(function () {
 
-            Route::get('/', 'index')->name('clientCase.index')->middleware('role:admin|advokasi|lbh|staf');
+            Route::get('/', 'index')->name('clientCase.index')->middleware('role:admin|advokasi|lbh|staf|pengacara');
             Route::get('/create', 'create')->name('clientCase.create');
             Route::post('/store', 'store')->name('clientCase.store');
-            Route::get('/{id}/show', 'show')->name('clientCase.show')->middleware('role:admin|advokasi|lbh|staf');
+            Route::get('/{id}/show', 'show')->name('clientCase.show')->middleware('role:admin|advokasi|lbh|staf|pengacara');
             Route::get('/{id}/edit', 'edit')->name('clientCase.edit');
             Route::put('/{id}/update', 'update')->name('clientCase.update');
             Route::delete('/{id}/forceDelete', 'forceDelete')->name('clientCase.forceDelete');
@@ -94,14 +94,14 @@ Route::group(['middleware' => ['auth']], function () {
     });
 
     // manajemen sidang
-    Route::group(['middleware' => ['role:admin|advokasi|lbh|staf'], 'prefix' => 'court-session'], function () {
+    Route::group(['middleware' => ['role:admin|advokasi|lbh|staf|pengacara'], 'prefix' => 'court-session'], function () {
 
         Route::controller(CourtSessionController::class)->group(function () {
 
-            Route::get('/', 'index')->name('courtSession.index')->middleware('role:admin|advokasi|lbh|staf');
+            Route::get('/', 'index')->name('courtSession.index')->middleware('role:admin|advokasi|lbh|staf|pengacara');
             Route::get('/create', 'create')->name('courtSession.create');
             Route::post('/store', 'store')->name('courtSession.store');
-            Route::get('/{id}/show', 'show')->name('courtSession.show')->middleware('role:admin|advokasi|lbh|staf');
+            Route::get('/{id}/show', 'show')->name('courtSession.show')->middleware('role:admin|advokasi|lbh|staf|pengacara');
             Route::get('/{id}/edit', 'edit')->name('courtSession.edit');
             Route::put('/{id}/update', 'update')->name('courtSession.update');
             Route::delete('/{id}/forceDelete', 'forceDelete')->name('courtSession.forceDelete');

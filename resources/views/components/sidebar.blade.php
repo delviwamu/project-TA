@@ -82,7 +82,7 @@
 
         
       
-        @if(auth()->user()->hasRole('admin') || auth()->user()->hasRole('advokasi'))
+        @if(auth()->user()->hasRole('admin') || auth()->user()->hasRole('advokasi') || auth()->user()->hasRole('pengacara'))
 
 
 

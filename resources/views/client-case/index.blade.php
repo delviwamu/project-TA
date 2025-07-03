@@ -46,7 +46,7 @@
                                                     <th>Status</th>
                                                     <th>Nama Klien</th>
                                                     <th>Pengacara</th>
-                                                    <th>Kepala Advokasi</th>
+                                                    <th>Penangungg Jawab Kasus</th>
                                                     <th>Tanggal Mulai</th>
                                                     <th>Tanggal Selesai</th>
                                                     <th>Opsi</th>

@@ -25,6 +25,11 @@
 
                                     <x-alert />
 
+                                        <a href="#" class="btn btn-dark" onclick="window.print()">
+                                            <i class="fas fa-print me-2"></i>
+                                            Cetak
+                                        </a>
+
                                     <!-- toolbar -->
                                     <x-toolbar 
                                     :btnCreate="route('client.create')"
