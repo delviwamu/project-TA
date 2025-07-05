@@ -58,8 +58,14 @@
                                                     <th scope="row">{{ $loop->iteration }}</th>
                                                     <td>{{ $item->judul_kasus }}</td>
                                                     <td>{{ ucfirst($item->jenis_kasus) }}</td>
-                                                    <td><span class="badge bg-{{ $item->status == 'selesai' ? 'success' : ($item->status == 'ditolak' ? 'danger' : 'warning') }}">
-                                                        {{ ucfirst($item->status) }}</span>
+                                                    <td>
+                                                        <a href="#" 
+                                                            data-bs-toggle="modal" 
+                                                            data-bs-target="#statusModal-{{ $item->id }}">
+                                                                <span class="badge bg-{{ $item->status == 'selesai' ? 'success' : ($item->status == 'ditolak' ? 'danger' : 'warning') }}">
+                                                                    {{ ucfirst($item->status) }}
+                                                                </span>
+                                                            </a>
                                                     </td>
                                                     <td>{{ $item->client->nama ?? '-' }}</td>
                                                     <td>{{ $item->pengacara->name ?? '-' }}</td>
@@ -84,6 +90,45 @@
                                                         </div>
                                                     </td>
                                                 </tr>
+
+                                                <div class="modal fade" id="statusModal-{{ $item->id }}" tabindex="-1" aria-labelledby="statusModalLabel-{{ $item->id }}" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <form method="POST" action="{{ route('clientCase.update.status', $item->id) }}">
+                                                            @csrf
+                                                            @method('PUT')
+
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <h5 class="modal-title" id="statusModalLabel-{{ $item->id }}">Ubah Status</h5>
+                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+                                                                </div>
+
+                                                                <div class="modal-body">
+                                                                    <div class="mb-3">
+                                                                        <label class="form-label">Judul Kasus</label>
+                                                                        <p>{{ $item->judul_kasus }}</p>
+                                                                    </div>
+
+                                                                    <div class="mb-3">
+                                                                        <label class="form-label">Status</label>
+                                                                        <select class="form-select" name="status">
+                                                                            <option value="baru" {{ $item->status == 'baru' ? 'selected' : '' }}>Baru</option>
+                                                                            <option value="berjalan" {{ $item->status == 'berjalan' ? 'selected' : '' }}>Berjalan</option>
+                                                                            <option value="selesai" {{ $item->status == 'selesai' ? 'selected' : '' }}>Selesai</option>
+                                                                            <option value="ditolak" {{ $item->status == 'ditolak' ? 'selected' : '' }}>Ditolak</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                                                                    <button type="submit" class="btn btn-primary">Simpan</button>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+
 
                                                 <x-force-delete-modal 
                                                     :id="$item->id" 
@@ -122,6 +167,18 @@
 
 @push('scripts')
 
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var statusModal = document.getElementById('statusModal');
+        statusModal.addEventListener('show.bs.modal', function (event) {
+            var button = event.relatedTarget;
+            var id = button.getAttribute('data-id');
+            var status = button.getAttribute('data-status');
 
+            document.getElementById('status-id').value = id;
+            document.getElementById('status-select').value = status;
+        });
+    });
+</script>
 
 @endpush

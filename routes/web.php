@@ -88,6 +88,10 @@ Route::group(['middleware' => ['auth']], function () {
             Route::get('/{id}/show', 'show')->name('clientCase.show')->middleware('role:admin|advokasi|lbh|staf|pengacara');
             Route::get('/{id}/edit', 'edit')->name('clientCase.edit');
             Route::put('/{id}/update', 'update')->name('clientCase.update');
+            
+            // updateStatus
+            Route::put('/{id}/update-status', 'updateStatus')->name('clientCase.update.status');
+
             Route::delete('/{id}/forceDelete', 'forceDelete')->name('clientCase.forceDelete');
 
         });

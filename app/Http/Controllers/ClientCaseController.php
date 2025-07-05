@@ -154,6 +154,23 @@ class ClientCaseController extends Controller
         return redirect()->route('clientCase.show', $clientCase->id)->with('success', 'Data kasus berhasil diperbarui.');
     }
 
+    // YourController.php
+    public function updateStatus(Request $request, $id)
+    {
+        $clientCase = ClientCase::findOrFail($id);
+
+        $validated = $request->validate([
+            'status' => ['required', Rule::in(['baru', 'berjalan', 'selesai', 'ditolak'])],
+        ]);
+
+        $clientCase->update([
+            'status' => $validated['status'],
+        ]);
+
+        return redirect()->back()->with('success', 'Status kasus berhasil diperbarui.');
+        // return redirect()->route('clientCase.show', $clientCase->id)->with('success', 'Status kasus berhasil diperbarui.');
+    }
+
     // forceDelete
     public function forceDelete($id)
     {

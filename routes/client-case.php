@@ -23,6 +23,9 @@ Route::controller(ClientCaseController::class)->group(function(){
     // update
     Route::put('/{id}/update', 'update')->name('clientCase.update');
 
+    // updateStatus
+    Route::put('/{id}/update-status', 'updateStatus')->name('clientCase.update.status');
+
     // forceDelete
     Route::delete('/{id}/forceDelete','forceDelete')->name('clientCase.forceDelete');
 
