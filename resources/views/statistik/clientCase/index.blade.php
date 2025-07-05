@@ -83,6 +83,6 @@
         statistikCaseBerdasarkanBulan.render();
       })
       .catch(error => console.error('Gagal mengambil data:', error));
-  </script>
+</script>
 
 @endpush

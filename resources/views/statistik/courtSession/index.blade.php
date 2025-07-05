@@ -64,14 +64,14 @@
             height: 350
           },
           series: [{
-            name: 'Jumlah Kasus',
+            name: 'Jumlah Sidang',
             data: values
           }],
           xaxis: {
             categories: bulan
           },
           title: {
-            text: 'Statistik Kasus per Bulan - Tahun Ini',
+            text: 'Statistik Sidang per Bulan - Tahun Ini',
             align: 'center'
           },
           dataLabels: {
@@ -83,6 +83,6 @@
         statistikCourtBerdasarkanBulan.render();
       })
       .catch(error => console.error('Gagal mengambil data:', error));
-  </script>
+</script>
 
 @endpush

@@ -35,7 +35,7 @@
 
 
 
-        <li class="nav-section">
+        {{-- <li class="nav-section">
           <span class="sidebar-mini-icon">
             <i class="fa fa-ellipsis-h"></i>
           </span>
@@ -78,11 +78,11 @@
           </div>
         </li>
 
-        @endif
+        @endif --}}
 
         
       
-        @if(auth()->user()->hasRole('admin') || auth()->user()->hasRole('advokasi') || auth()->user()->hasRole('pengacara'))
+        @if(auth()->user()->hasRole('admin') || auth()->user()->hasRole('advokasi'))
 
 
 
@@ -182,7 +182,7 @@
 
         @endif
 
-        @if(auth()->user()->hasRole('staf') || auth()->user()->hasRole('lbh'))
+        @if(auth()->user()->hasRole('staf') || auth()->user()->hasRole('lbh') || auth()->user()->hasRole('pengacara'))
 
         <li class="nav-item  @if(Request::segment(1) == 'client') active @endif">
           <a href="{{ route('client.index') ? route('client.index') : route('dasbor') }}">
