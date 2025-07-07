@@ -34,6 +34,29 @@ class ClientCaseController extends Controller
         ));
     }
 
+    // print
+    public function print(Request $request)
+    {
+        $pageTitle = 'Cetak Data Kasus Klien';
+        $pageDescription = 'Cetaj daftar kasus yang ditangani.';
+
+        $search = $request->query('search');
+
+        $datas = ClientCase::with('client')
+            ->when($search, function ($query, $search) {
+                return $query->where('judul_kasus', 'like', "%{$search}%");
+            })
+            ->orderBy('id','desc')
+            ->paginate(100)
+            ->withQueryString();
+
+        return view('client-case.print', compact(
+            'pageTitle',
+            'pageDescription',
+            'datas',
+        ));
+    }
+
     public function create()
     {
         $pageTitle = 'Buat Kasus Baru';

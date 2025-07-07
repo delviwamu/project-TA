@@ -64,6 +64,8 @@ Route::group(['middleware' => ['auth']], function () {
         Route::controller(ClientController::class)->group(function () {
 
             Route::get('/', 'index')->name('client.index')->middleware('role:admin|advokasi|lbh|staf|pengacara');
+
+            Route::get('/print', 'print')->name('client.print')->middleware('role:admin|advokasi|lbh|staf|pengacara');
             
             // Route::middleware(['role:staf'])->get('/', 'index')->name('client.index');
 
@@ -83,6 +85,8 @@ Route::group(['middleware' => ['auth']], function () {
         Route::controller(ClientCaseController::class)->group(function () {
 
             Route::get('/', 'index')->name('clientCase.index')->middleware('role:admin|advokasi|lbh|staf|pengacara');
+            Route::get('/print', 'print')->name('clientCase.print')->middleware('role:admin|advokasi|lbh|staf|pengacara');
+
             Route::get('/create', 'create')->name('clientCase.create');
             Route::post('/store', 'store')->name('clientCase.store');
             Route::get('/{id}/show', 'show')->name('clientCase.show')->middleware('role:admin|advokasi|lbh|staf|pengacara');
@@ -103,6 +107,8 @@ Route::group(['middleware' => ['auth']], function () {
         Route::controller(CourtSessionController::class)->group(function () {
 
             Route::get('/', 'index')->name('courtSession.index')->middleware('role:admin|advokasi|lbh|staf|pengacara');
+            Route::get('/print', 'print')->name('courtSession.print')->middleware('role:admin|advokasi|lbh|staf|pengacara');
+
             Route::get('/create', 'create')->name('courtSession.create');
             Route::post('/store', 'store')->name('courtSession.store');
             Route::get('/{id}/show', 'show')->name('courtSession.show')->middleware('role:admin|advokasi|lbh|staf|pengacara');

@@ -25,6 +25,11 @@
 
                                     <x-alert />
 
+                                    <a href="{{ route('courtSession.print') }}" target="_blank" class="btn">
+                                        <i class="fas fa-print me-2"></i>
+                                        Cetak Laporan Semua Data Sidang
+                                    </a>
+
                                     <!-- toolbar -->
                                     <x-toolbar 
                                     :btnCreate="route('courtSession.create')"

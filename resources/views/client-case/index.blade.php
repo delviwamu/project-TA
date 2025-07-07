@@ -25,12 +25,17 @@
 
                                     <x-alert />
 
+                                    <a href="{{ route('clientCase.print') }}" target="_blank" class="btn">
+                                        <i class="fas fa-print me-2"></i>
+                                        Cetak Laporan Semua Data Kasus Klien
+                                    </a>
+
                                     <!-- toolbar -->
                                     <x-toolbar 
-                                    :btnCreate="route('client.create')"
+                                    :btnCreate="route('clientCase.create')"
                                     :formAction="Request::segment(3) == 'trash' 
-                                        ? route('client.trash') 
-                                        : route('client.index')"
+                                        ? route('clientCase.trash') 
+                                        : route('clientCase.index')"
                                     />
 
 
@@ -59,6 +64,7 @@
                                                     <td>{{ $item->judul_kasus }}</td>
                                                     <td>{{ ucfirst($item->jenis_kasus) }}</td>
                                                     <td>
+                                                        @if(auth()->user()->hasRole('admin') || auth()->user()->hasRole('advokasi'))
                                                         <a href="#" 
                                                             data-bs-toggle="modal" 
                                                             data-bs-target="#statusModal-{{ $item->id }}">
@@ -66,6 +72,11 @@
                                                                     {{ ucfirst($item->status) }}
                                                                 </span>
                                                             </a>
+                                                        @else
+                                                            <span class="badge bg-{{ $item->status == 'selesai' ? 'success' : ($item->status == 'ditolak' ? 'danger' : 'warning') }}">
+                                                                {{ ucfirst($item->status) }}
+                                                            </span>
+                                                        @endif
                                                     </td>
                                                     <td>{{ $item->client->nama ?? '-' }}</td>
                                                     <td>{{ $item->pengacara->name ?? '-' }}</td>

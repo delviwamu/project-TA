@@ -51,36 +51,42 @@
     <h1>{{ $pageTitle ?? 'Cetak Klien' }}</h1>
     <p>{{ $pageDescription ?? 'Halaman ini digunakan untuk mencetak data klien.' }}</p>
 
-    <table>
+    <table class="table table-bordered table-hover">
         <thead>
             <tr>
                 <th>#</th>
-                <th>Nama Lengkap</th>
-                <th>NIK</th>
-                <th>Alamat</th>
-                <th>Nomor HP</th>
-                <th>Tempat, Tanggal Lahir</th>
-                <th>Jenis Kelamin</th>
-                <th>Tanggal Input</th>
+                <th>Judul Kasus</th>
+                <th>Jenis Kasus</th>
+                <th>Status</th>
+                <th>Nama Klien</th>
+                <th>Pengacara</th>
+                <th>Penangungg Jawab Kasus</th>
+                <th>Tanggal Mulai</th>
+                <th>Tanggal Selesai</th>
             </tr>
         </thead>
         <tbody>
-            @forelse($datas as $key => $item)
+        @forelse($datas as $key => $item)
             <tr>
-                <td>{{ $loop->iteration }}</td>
-                <td>{!! $item->nama !!}</td>
-                <td>{!! $item->nik ?? '' !!}</td>
-                <td>{!! $item->alamat ?? '' !!}</td>
-                <td>{!! $item->no_hp ?? '' !!}</td>
-                <td>{{ $item->tempat_lahir ? $item->tempat_lahir . ',' : '' }} {{ \Carbon\Carbon::parse($item->tanggal_lahir)->format('d-m-Y') }}</td>
-                <td>{!! $item->jenis_kelamin ?? '' !!}</td>
-                <td>{!! $item->tanggal_input ?? '' !!}</td>
+                <th scope="row">{{ $loop->iteration }}</th>
+                <td>{{ $item->judul_kasus }}</td>
+                <td>{{ ucfirst($item->jenis_kasus) }}</td>
+                <td>
+                    {{ ucfirst($item->status) }}
+                </td>
+                <td>{{ $item->client->nama ?? '-' }}</td>
+                <td>{{ $item->pengacara->name ?? '-' }}</td>
+                <td>{{ $item->kepalaAdvokasi->name ?? '-' }}</td>
+                <td>{{ \Carbon\Carbon::parse($item->tanggal_mulai)->format('d-m-Y') }}</td>
+                <td>{{ $item->tanggal_selesai ? \Carbon\Carbon::parse($item->tanggal_selesai)->format('d-m-Y') : '-' }}</td>
+                
             </tr>
-            @empty
+
+        @empty
             <tr>
-                <td colspan="8" style="text-align: center;">Tidak ada data</td>
+                <td colspan="10" class="text-center">Tidak ada data kasus</td>
             </tr>
-            @endforelse
+        @endforelse
         </tbody>
     </table>
 

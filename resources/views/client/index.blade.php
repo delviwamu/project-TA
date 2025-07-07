@@ -25,9 +25,9 @@
 
                                     <x-alert />
 
-                                        <a href="#" class="btn btn-dark" onclick="window.print()">
+                                        <a href="{{ route('client.print') }}" target="_blank" class="btn">
                                             <i class="fas fa-print me-2"></i>
-                                            Cetak
+                                            Cetak Laporan Semua Data Klien
                                         </a>
 
                                     <!-- toolbar -->

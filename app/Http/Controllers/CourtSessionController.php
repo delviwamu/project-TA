@@ -31,6 +31,28 @@ class CourtSessionController extends Controller
         return view('court-session.index', compact('pageTitle', 'pageDescription', 'datas'));
     }
 
+    // print
+    public function print(Request $request)
+    {
+        $pageTitle = 'Cetak Daftar Sidang';
+        $pageDescription = 'Cetak daftar sidang pengadilan untuk setiap kasus.';
+
+        $search = $request->query('search');
+
+        $datas = CourtSession::with('case.client')
+            ->when($search, function ($query, $search) {
+                return $query->where('nomor_perkara', 'like', "%{$search}%")
+                             ->orWhereHas('case', function ($q) use ($search) {
+                                 $q->where('judul_kasus', 'like', "%{$search}%");
+                             });
+            })
+            ->orderBy('id', 'desc')
+            ->paginate(100)
+            ->withQueryString();
+
+        return view('court-session.print', compact('pageTitle', 'pageDescription', 'datas'));
+    }
+
     public function create()
     {
         $pageTitle = 'Buat Jadwal Sidang';

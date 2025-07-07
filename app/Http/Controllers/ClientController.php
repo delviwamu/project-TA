@@ -35,6 +35,28 @@ class ClientController extends Controller
             'datas',
         ));
     }
+
+    // print
+    public function print(Request $request)
+    {
+        $pageTitle = 'Cetak Data Klien';
+        $pageDescription = 'Cetak klien yang sudah ditambahkan. Menampilkan: Nama Lengkap, NIK, Alamat, Nomor HP, dan Tanggal Input.';
+
+        $search = $request->query('search');
+
+        $datas = Client::when($search, function ($query, $search) {
+                return $query->where('nama', 'like', "%{$search}%");
+            })
+            ->orderBy('id', 'desc')
+            ->paginate(100)
+            ->withQueryString(); // supaya query string search tetap ada saat paginasi
+
+        return view('client.print', compact(
+            'pageTitle',
+            'pageDescription',
+            'datas',
+        ));
+    }
     
     // create 
     public function create()
