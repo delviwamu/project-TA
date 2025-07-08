@@ -209,6 +209,38 @@
         </li>
 
         @endif
+
+        <!-- laporan -->
+        <li class="nav-item @if(Request::segment(1) == 'client-case') active @endif">
+          <a data-bs-toggle="collapse" href="#laporan" class="collapsed" aria-expanded="false">
+            <i class="fas fa-suitcase"></i>
+            <p>Laporan</p>
+            <span class="caret"></span>
+          </a>
+          <div class="collapse @if(Request::segment(1) == 'client-case') show @endif" id="laporan">
+            <ul class="nav nav-collapse">
+              
+              <li @if(Request::segment(1) == 'client-case' && Request::segment(2) == 'create') class="active" @endif>
+                <a href="{{ route('clientCase.print') }}" target="_blank">
+                  <span class="sub-item">Laporan Data Kasus</span>
+                </a>
+              </li>
+              
+              <li @if(Request::segment(1) == 'client-case' && Request::segment(2) == '') class="active" @endif>
+                <a href="{{ route('client.print') }}" target="_blank">
+                  <span class="sub-item">Laporan Data Klien</span>
+                </a>
+              </li>
+              
+              <li @if(Request::segment(1) == 'client-case' && Request::segment(2) == '') class="active" @endif>
+                <a href="{{ route('courtSession.print') }}" target="_blank">
+                  <span class="sub-item">Laporan Data Sidang</span>
+                </a>
+              </li>
+
+            </ul>
+          </div>
+        </li>
            
             
       </ul>
