@@ -89,7 +89,7 @@
                                                                 <i class="fa fa-eye"></i> Detail
                                                             </a>
 
-                                                            @if(auth()->user()->hasRole('admin') || auth()->user()->hasRole('advokasi'))
+                                                            @if(auth()->user()->hasRole('admin') || auth()->user()->hasRole('advokasi') || auth()->user()->hasRole('staf'))
                                                                 <a href="{{ route('clientCase.edit', $item->id) }}" class="btn btn-sm text-muted" title="Ubah">
                                                                     <i class="fa fa-edit"></i>
                                                                 </a>

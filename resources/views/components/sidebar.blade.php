@@ -82,7 +82,7 @@
 
         
       
-        @if(auth()->user()->hasRole('admin') || auth()->user()->hasRole('advokasi'))
+        @if(auth()->user()->hasRole('admin') || auth()->user()->hasRole('advokasi') || auth()->user()->hasRole('staf'))
 
 
 
@@ -93,6 +93,7 @@
           <h4 class="text-section">Manajemen Data</h4>
         </li>
 
+        @if(!auth()->user()->hasRole('staf'))
         <!-- manajemen data -->
         <li class="nav-item @if(Request::segment(1) == 'client') active @endif">
           <a data-bs-toggle="collapse" href="#client" class="collapsed" aria-expanded="false">
@@ -121,6 +122,7 @@
             </ul>
           </div>
         </li>
+        @endif
 
         <!-- manajemen data -->
         <li class="nav-item @if(Request::segment(1) == 'client-case') active @endif">
@@ -132,7 +134,7 @@
           <div class="collapse @if(Request::segment(1) == 'client-case') show @endif" id="case">
             <ul class="nav nav-collapse">
               
-              @if(auth()->user()->hasRole('admin') || auth()->user()->hasRole('advokasi'))
+              @if(auth()->user()->hasRole('admin') || auth()->user()->hasRole('advokasi') || auth()->user()->hasRole('staf'))
               <li @if(Request::segment(1) == 'client-case' && Request::segment(2) == 'create') class="active" @endif>
                 <a href="{{ route('clientCase.create') ? route('clientCase.create') : route('dasbor') }}">
                   <span class="sub-item">Buat Kasus Baru</span>
@@ -151,6 +153,7 @@
           </div>
         </li>
 
+        @if(!auth()->user()->hasRole('staf'))
         <!-- manajemen data -->
         <li class="nav-item @if(Request::segment(1) == 'court-session') active @endif">
           <a data-bs-toggle="collapse" href="#court" class="collapsed" aria-expanded="false">
@@ -179,6 +182,7 @@
             </ul>
           </div>
         </li>
+        @endif
 
         @endif
 
@@ -190,11 +194,13 @@
             </a>
         </li>
 
+        @if(!auth()->user()->hasRole('staf'))
         <li class="nav-item  @if(Request::segment(1) == 'client-case') active @endif">
           <a href="{{ route('clientCase.index') ? route('clientCase.index') : route('dasbor') }}">
               <i class="fas fa-suitcase"></i> <span class="sub-item">Data Kasus</span>
             </a>
         </li>
+        @endif
 
         <li class="nav-item  @if(Request::segment(1) == 'court-session') active @endif">
           <a href="{{ route('courtSession.index') ? route('courtSession.index') : route('dasbor') }}">
