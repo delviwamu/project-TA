@@ -88,7 +88,7 @@ class ClientCaseController extends Controller
             'kepala_advokasi_id' => 'required|exists:users,id',
             'tanggal_mulai' => 'required|date',
             'tanggal_selesai' => 'nullable|date|after_or_equal:tanggal_mulai',
-            'bukti_kasus' => 'nullable|file|mimes:pdf,doc,docx,xls,xlsx|max:5120',
+            'bukti_kasus' => 'nullable|file|mimes:jpg,jpeg,png,pdf,doc,docx,xls,xlsx|max:5120',
         ]);
 
         if ($request->hasFile('bukti_kasus')) {
@@ -154,7 +154,7 @@ class ClientCaseController extends Controller
             'kepala_advokasi_id' => 'required|exists:users,id',
             'tanggal_mulai' => 'required|date',
             'tanggal_selesai' => 'nullable|date|after_or_equal:tanggal_mulai',
-            'bukti_kasus' => 'nullable|file|mimes:pdf,doc,docx,xls,xlsx|max:5120',
+            'bukti_kasus' => 'nullable|file|mimes:jpg,jpeg,png,pdf,doc,docx,xls,xlsx|max:5120',
         ]);
 
         if ($request->hasFile('bukti_kasus')) {
