@@ -5,6 +5,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>{{ $siteTitle ?? env('APP_NAME') }}</title>
 
+  <!-- Tag Meta -->
   <meta content="width=device-width, initial-scale=1.0, shrink-to-fit=no" name="viewport" />
 
   <link rel="icon" href="{!! asset($siteFavicon) ?? asset('assets/img/logo-lbh.png') !!}" type="image/x-icon" />
@@ -29,13 +30,18 @@
     });
   </script>
 
+  <!-- Meta Tags -->
+
   <!-- CSS Files -->
   <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}" />
   <link rel="stylesheet" href="{{ asset('assets/css/plugins.min.css') }}" />
   <link rel="stylesheet" href="{{ asset('assets/css/kaiadmin.min.css') }}" />
 
-  <!-- CSS Just for demo purpose, don't include it in your project -->
+  <!-- Integrasi file JavaScript -->
+  <!-- Integrasi file CSS -->
   <link rel="stylesheet" href="{{ asset('assets/css/demo.css') }}" />
+
+  <!-- Tambahan CSS dari konten -->
   @yield('additionalHeadScripts')
 </head>
 
@@ -43,24 +49,26 @@
 
   <div class="wrapper">
 
+    <!-- Komponen sidebar -->
     <x-sidebar />
 
-    <!-- main-panel -->
     <div class="main-panel">
 
+      <!-- Komponen header -->
       <x-header />
-
+      
+      <!-- Komponen konten utama -->
       @yield('content')
-
+      
+      <!-- Komponen footer -->
       <x-footer />
 
     </div>
-    <!-- end main-panel -->
 
   </div>
   <!-- end wrapper -->
 
-  <!--   Core JS Files   -->
+  <!-- Integrasi file JavaScript -->
   <script src="{{ asset('assets/js/core/jquery-3.7.1.min.js') }}"></script>
   <script src="{{ asset('assets/js/core/popper.min.js') }}"></script>
   <script src="{{ asset('assets/js/core/bootstrap.min.js') }}"></script>
@@ -96,6 +104,7 @@
   <!-- Kaiadmin JS -->
   <script src="{{ asset('assets/js/kaiadmin.min.js') }}"></script>
 
+  <!-- Tambahan JavaScript dari konten -->
   @stack('scripts')
 
 </body>
